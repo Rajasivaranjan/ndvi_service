@@ -245,13 +245,50 @@ ndvi_service/
 │   │   └── S2L2ACollection.py
 │   └── raster_analysis/
 │       └── ZonalStats.py
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py             # Pytest fixtures
+│   ├── test_schemas.py         # Schema validation tests
+│   ├── test_health.py          # Health endpoint tests
+│   ├── test_ndvi_service.py   # Service layer tests
+│   └── test_ndvi_routes.py     # API endpoint tests
 ├── .env.example
 ├── .gitignore
+├── pytest.ini                  # Pytest configuration
 ├── requirements.txt
 └── README.md
 ```
 
 ## Testing
+
+### Unit Tests
+
+Run the test suite using pytest:
+
+```bash
+# Install test dependencies (if not already installed)
+pip install -r requirements.txt
+
+# Run all tests
+pytest
+
+# Run tests with coverage report
+pytest --cov=app --cov-report=html
+
+# Run specific test file
+pytest tests/test_health.py
+
+# Run tests with verbose output
+pytest -v
+```
+
+The test suite includes:
+- **Schema validation tests** (`test_schemas.py`): Tests for Pydantic model validation
+- **Health endpoint tests** (`test_health.py`): Tests for health check endpoint
+- **NDVI service tests** (`test_ndvi_service.py`): Tests for service layer methods
+- **NDVI route tests** (`test_ndvi_routes.py`): Tests for API endpoints
+
+### API Testing
 
 You can test the API using the interactive documentation at `/docs` or with curl:
 
